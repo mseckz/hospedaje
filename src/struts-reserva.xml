@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+        
+<struts>
+	<package name="struts-reserva" extends="demo" namespace="/reserva">
+	
+		<action name="reservar" class="action.ReservaAction">
+			<result type="tiles">d_reservaHabitación</result>
+		</action>
+		
+		<action name="listarHabitaciones" class="action.ReservaAction" method="index">
+			<result name="ok" type="tiles">d_listaHabitacion</result>
+		</action>
+		
+		<action name="registrarReserva" class="action.ReservaAction" method="showForm">
+			<result type="tiles">d_formReserva</result>
+		</action>
+		
+		<action name="registrarReservaPOST" class="action.ReservaAction" method="registrarReserva">
+			<result type="tiles">d_checkout</result>
+			<result name="input" type="tiles">d_formReserva</result>
+		</action>
+		
+		<action name="checkoutReserva" class="action.ReservaAction" method="registrarReserva">
+			<result type="tiles">d_checkout</result>
+		</action>
+		
+		<action name="mostrarRegistroCliente" class="action.ReservaAction" method="mostrarRegistroCliente">
+			<result type="tiles">d_registroCliente</result>
+		</action>
+		
+		<action name="registrarCliente" class="action.ReservaAction" method="registrarCliente">
+			<result type="tiles">d_registroCliente</result>
+			<result name="input" type="tiles">d_registroCliente</result>
+		</action>
+		
+	</package>
+</struts>

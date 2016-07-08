@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+"-//Apache Struts//XWork Validator 1.0.3//EN"
+"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+
+<validators>
+	<field name="reserva.correo">
+		<field-validator type="requiredstring">
+      		<message key="Ingrese correo"/>
+   		</field-validator>
+		<field-validator type="email">
+      		<message key="Ingrese correo valido"/>
+   		</field-validator>
+	</field>
+	
+	<field name="reserva.telefono">
+		<field-validator type="requiredstring">
+      		<message key="Ingrese telefono"/>
+   		</field-validator>
+   		<field-validator type="stringlength">
+			<param name="minLength">9</param>
+			<param name="maxLength">9</param>
+			<message key="Ingrese telefono valido"/>
+		</field-validator>
+	</field>
+	
+	<field name="reserva.nombres">
+		<field-validator type="requiredstring">
+      		<message key="Ingrese nombres"/>
+   		</field-validator>
+	</field>
+	
+	<field name="reserva.apellidos">
+		<field-validator type="requiredstring">
+      		<message key="Ingrese apellidos"/>
+   		</field-validator>
+	</field>
+	
+</validators>

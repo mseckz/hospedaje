@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration 
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias type="model.AdministradorDTO" alias="administrador" />
+		<typeAlias type="model.ClienteDTO" alias="cliente"/>
+		<typeAlias type="model.EmpleadoDTO" alias="empleado"/>
+		<typeAlias type="model.EstadoHabitacionDTO" alias="estadohabitacion"/>
+		<typeAlias type="model.HabitacionDataDTO" alias="habitacion"/>
+		<typeAlias type="model.ReservaDataDTO" alias="reserva"/>
+		<typeAlias type="model.TipoCamaDTO" alias="tipocama"/>
+		<typeAlias type="model.TipoHabitacionDTO" alias="tipohabitacion"/>
+		<typeAlias type="model.ReservaUsuarioDTO" alias="reservaUsuario"/>
+	</typeAliases>
+	
+	<environments default="habitacion">
+
+		<environment id="habitacion">
+			<transactionManager type="JDBC" />
+			<dataSource type="UNPOOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://localhost/hospedaje" />
+				<property name="username" value="root" />
+				<property name="password" value="mysql" />
+			</dataSource>
+
+		</environment>
+	</environments>
+
+	<mappers>
+		<package name="mybatis.mapper" />
+	</mappers>
+
+</configuration>
+
+

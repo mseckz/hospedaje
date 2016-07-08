@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+        
+<struts>
+
+	<constant name="struts.custom.i18n.resources" value="recursos.textos" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+	 			
+	<include file="struts-cliente.xml"/>
+	<include file="struts-empleado.xml"/>
+	<include file="struts-reserva.xml"/>
+	<include file="struts-habitacion.xml"/>
+	
+       <package name="demo" extends="struts-default">
+       
+           	<result-types>
+				<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
+			</result-types>
+		
+			
+			<action name="inicio" >
+				<result type="tiles">d_index</result>
+			</action>
+			
+			<action name="nosotros">
+				<result type="tiles">d_nosotros</result>
+			</action>
+	
+	</package>
+
+</struts>

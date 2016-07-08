@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="mybatis.mapper.ClienteMapper">
+ 
+ 	<resultMap type="cliente" id="rmCliente">
+ 		<id column="cod_cliente" property="cod_cliente" />
+ 		<result column="nombres" property="nombres" jdbcType="VARCHAR"/>
+ 		<result column="apellidos" property="apellidos" jdbcType="VARCHAR"/>
+ 		<result column="telefono" property="telefono" jdbcType="VARCHAR"/>
+ 		<result column="correo" property="correo" jdbcType="VARCHAR"/>
+ 	</resultMap>
+ 	
+ 	<select id=""></select>
+ 	
+ 	<insert id="insertar" parameterType="cliente">
+ 		INSERT INTO `hospedaje`.`cliente_data` (`nombres`, `apellidos`, `telefono`, `correo`)
+ 		 VALUES (#{nombres}, #{apellidos}, #{telefono}, #{correo});
+ 	</insert>
+ 
+ </mapper>

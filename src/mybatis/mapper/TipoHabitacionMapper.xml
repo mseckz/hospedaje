@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="mybatis.mapper.TipoHabitacionMapper">
+ 
+ 	<resultMap type="tipohabitacion" id="rmTipo">
+ 		<id column="tipo_hab" property="tipo_hab" jdbcType="VARCHAR"/>
+ 		<result column="desc_hab" property="desc_hab" jdbcType="VARCHAR"/>
+ 		<result column="image_tipo" property="image_tipo" jdbcType="VARCHAR"/>
+ 		<result column="precio" property="precio" jdbcType="VARCHAR"/>
+ 	</resultMap>
+ 	
+ 	<select id="getTipos" resultMap="rmTipo">
+ 		SELECT * FROM tipo_hab_data;
+ 	</select>
+ 	
+ 	<select id="obtenerTipo" parameterType="Integer" resultMap="rmTipo">
+ 		SELECT * from tipo_hab_data where tipo_hab = #{id}
+ 	</select>
+ 
+ </mapper>

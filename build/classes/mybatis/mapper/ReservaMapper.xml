@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="mybatis.mapper.ReservaMapper">
+ 
+ 	<resultMap type="reservaUsuario" id="rmReserva">
+ 		<id column="id" property="id"/>
+ 		<result column="nombres" property="nombres"/>
+ 		<result column="apellidos" property="apellidos"/>
+ 		<result column="correo" property="correo"/>
+ 		<result column="telefono" property="telefono"/>
+ 		<result column="cuartos" property="cuartos"/>
+ 		<result column="personas" property="personas"/>
+ 		<result column="dias" property="dias"/>
+ 		<result column="tipo_hab" property="tipo_hab"/>
+ 		<result column="fecha_llegada" property="fecha_llegada"/>
+ 		<result column="fecha_salida" property="fecha_salida"/>
+ 		<result column="monto" property="monto"/>
+ 	</resultMap>
+ 	
+ 	<insert id="registrarReserva" parameterType="reservaUsuario">
+ 		INSERT INTO `hospedaje`.`reservausuario` (`nombres`, `apellidos`, `correo`, `telefono`, `cuartos`, `personas`, `dias`, `tipo_hab`, `fecha_llegada`, `fecha_salida`,`monto`) 
+ 		VALUES (#{nombres}, #{apellidos}, #{correo},#{telefono}, #{cuartos},#{personas},#{dias},
+ 		#{tipo_hab}, #{fecha_llegada}, #{fecha_salida}, #{monto})
+ 	</insert>
+ 	
+ 	<select id="getUltimaReserva" resultMap="rmReserva">
+ 		SELECT * FROM reservaUsuario order by id desc limit 1;
+ 	</select>
+ </mapper> 

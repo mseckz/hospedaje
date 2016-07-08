@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="mybatis.mapper.HabitacionDataMapper">
+
+	<resultMap type="habitacion" id="rmHabitacionDtoDetalle">
+		<id column="cod_hab" property="cod_hab"/> 
+		<result column="costo_hab" property="costo_hab"/>
+		<result column="foto_habit" property="foto"/>
+		
+		<association property="tipo_hab" javaType="tipohabitacion">
+			<result column="desc_hab" property="desc_hab"/>
+		</association>
+	
+		<association property="tipo_cama" javaType="tipocama">
+			<result column="desc_cama" property="desc_cama"/>
+		</association>
+		
+		<association property="estado_hab" javaType="estadohabitacion">
+			<result column="desc_estado" property="desc_estado"/>
+		</association>
+		
+	</resultMap>
+	
+	<select id="obtenerDetalle" resultMap="rmHabitacionDtoDetalle" parameterType="habitacion">
+		SELECT h.cod_hab, h.costo_hab, h.foto_habit, th.desc_hab, tc.desc_cama, e.desc_estado
+		FROM habitacion_data h, tipo_hab_data th, Tipo_Cama_Data tc, estado_hab_data e 
+		where h.tipo_hab = th.tipo_hab
+		and h.tipo_cama = tc.tipo_cama  
+		and h.estado_hab = e.estado_hab
+		and h.cod_hab=#{cod_hab}
+	</select>
+	
+	<select id="getHabitacionDTO" resultMap="rmHabitacionDtoDetalle" parameterType="habitacion">
+		SELECT cod_hab, 
+			tipo_hab as tipo_hab, 
+			tipo_cama as tipo_cama, 
+			estado_hab as estado_hab, 
+			costo_hab as costo_hab, 
+			foto_habit as foto
+		from Habitacion_Data;
+	</select>
+	
+	<insert id="insertar" parameterType="habitacion">
+		insert into habitacion_data(cod_hab,tipo_hab,tipo_cama,estado_hab, costo_hab, foto)
+			values(#{cod_hab}, #{tipohabitacion.tipo_hab}, #{tipocama.tipo_cama}, #{estadohabitacion.estado_hab}, #{costo_hab}, #{foto})
+	</insert>
+
+</mapper>
